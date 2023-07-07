@@ -2,12 +2,15 @@ import React from "react";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ImageScreen from "./app/screens/ImageScreen";
 import { View } from "react-native";
+import AppCard from "./app/components/AppCard";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 
 export default function App() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-     <WelcomeScreen />
-      {/* // <ImageScreen /> */}
+    <View>
+      {/* <WelcomeScreen /> */}
+      <ImageScreen />
+    {/* <ListingDetailsScreen/> */}
     </View>
   );
 }
