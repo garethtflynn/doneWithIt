@@ -3,9 +3,8 @@ import { StyleSheet, FlatList, View } from "react-native";
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
-import ListItem from "../components/ListItem"; 
 import Icon from "../components/Icon";
-import ListItemSeparator from "../components/ListItemSeparator";
+import { ListItem, ListItemSeparator, ListItemDeleteAction } from '../components/lists'
 
 const menuItems = [
   {
@@ -13,7 +12,7 @@ const menuItems = [
     icon: {
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
-    }
+    },
   },
   {
     title: "my messages",
@@ -37,17 +36,24 @@ function AccountScreen(props) {
       <View style={styles.container}>
         <FlatList
           data={menuItems}
-          keyExtractor={menuItem => menuItem.title}
+          keyExtractor={(menuItem) => menuItem.title}
           ItemSeparatorComponent={ListItemSeparator}
-          renderItem={({ item }) => <ListItem 
-          title={item.title} 
-          IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>}
-        />}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              IconComponent={
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={item.icon.backgroundColor}
+                />
+              }
+            />
+          )}
         />
       </View>
-      <ListItem 
-        title='log out'
-        IconComponent={<Icon name='logout' backgroundColor="#ffe66d"/>}
+      <ListItem
+        title="log out"
+        IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
       />
     </Screen>
   );
@@ -56,10 +62,10 @@ function AccountScreen(props) {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 20,
-  }, 
+  },
   screen: {
-    backgroundColor: colors.light
-  }
+    backgroundColor: colors.light,
+  },
 });
 
 export default AccountScreen;
