@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Button, Image } from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ImageScreen from "./app/screens/ImageScreen";
 import AppCard from "./app/components/AppCard";
@@ -14,7 +15,20 @@ import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
+import * as Permissions from "expo-permissions";
 
 export default function App() {
+  const [imageUris, setImageUris] = useState([]);
+
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri]);
+  };
+
+  const handleRemove = (uri) => {
+    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+  };
+
   return <ListingEditScreen />;
 }
