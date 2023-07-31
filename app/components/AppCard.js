@@ -1,18 +1,29 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import colors from "../config/colors";
 import AppText from "./AppText";
 
-function AppCard({ title, subTitle, image }) {
+function AppCard({ title, subTitle, image, onPress }) {
   return (
-    <View style={styles.card}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-      <AppText numberOfLines={1} style={styles.title}>{title}</AppText>
-      <AppText numberOfLines={2} style={styles.subTitle}>{subTitle}</AppText>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.card}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailsContainer}>
+          <AppText numberOfLines={1} style={styles.title}>
+            {title}
+          </AppText>
+          <AppText numberOfLines={2} style={styles.subTitle}>
+            {subTitle}
+          </AppText>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -21,19 +32,18 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: colors.white,
     marginBottom: 20,
-    overflow: "hidden"
+    overflow: "hidden",
   },
-  detailsContainer:{
+  detailsContainer: {
     padding: 20,
-
   },
   image: {
     width: "100%",
     height: 200,
   },
-  subTitle:{
+  subTitle: {
     color: colors.secondary,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   title: {
     marginBottom: 5,
